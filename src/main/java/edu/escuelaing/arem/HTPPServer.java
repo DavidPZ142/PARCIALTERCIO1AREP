@@ -46,7 +46,7 @@ public class HTPPServer {
                     + "<body>"
                     + "My Web Site"
                     + "</body>"
-                    + "</html>" + inputLine;
+                    + "</html>" ;
 
             out.println(outputLine);
 

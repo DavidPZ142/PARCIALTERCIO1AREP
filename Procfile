@@ -1,1 +1,1 @@
-web: java  -cp target/classes:target/dependency/* edu.escuelaing.arem.ParcialArep
+web: java  -cp target/classes:target/dependency/* edu.escuelaing.arem.HTPPServer
