@@ -27,6 +27,7 @@ public class HTPPServer {
             String outputLine;
             boolean firstline = true;
             String file = "";
+
             while ((inputLine = in.readLine()) != null) {
                 if (firstline) {
                     file = inputLine.split(" ")[1];
@@ -37,6 +38,7 @@ public class HTPPServer {
                     break;
                 }
             }
+            String[] lista = file.split("=");
             if (file.contains("/clima")) {
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Conten-Type: text/html\r\n"
@@ -48,10 +50,17 @@ public class HTPPServer {
                         + "<title>Clima</title>\n"
                         + "</head>"
                         + "<body>"
-                        + "Clima"
+                        + "<h1 >Clima</h1>"
+                        +" <label> Ciudad:    </label>"
+                        +"<input type=\"text\" id = \"ingresado\">"
+                        +"<button"
                         + "</body>"
                         + "</html>";
-            } else if (file.contains("/consulta")) {
+            } else if (file.contains("/consulta?lugar=")) {
+
+                Clima clima = new Clima();
+                String resp = Clima.getClima(lista[1]);
+
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Conten-Type: text/html\r\n"
                         + "\r\n"
@@ -62,7 +71,7 @@ public class HTPPServer {
                         + "<title>Consulta</title>\n"
                         + "</head>"
                         + "<body>"
-                        + "Clima"
+                        + resp
                         + "</body>"
                         + "</html>";
             }
