@@ -23,7 +23,7 @@ public class HTPPServer {
             }
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String inputLine, outputLine;
+            String inputLine;
 
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Received: " + inputLine);
@@ -31,6 +31,9 @@ public class HTPPServer {
                     break;
                 }
             }
+
+
+            String outputLine;
             outputLine = "HTTP/1.1 200 OK\r\n"
                     + "Conten-Type: text/html\r\n"
                     + "\r\n"
@@ -52,9 +55,9 @@ public class HTPPServer {
             in.close();
             clientSocket.close();
             serverSocket.close();
-
         }
     }
+
 
     static int getPort() {
         if (System.getenv("PORT") != null) {
