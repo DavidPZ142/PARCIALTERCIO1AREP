@@ -1,0 +1,3 @@
+# PARCIALTERCIO1AREP
+
+David Pérez
