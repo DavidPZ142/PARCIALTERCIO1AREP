@@ -11,7 +11,7 @@ public class Clima {
 
 
     public static String getClima(String city) throws IOException {
-        String res = "{}";
+        String res = "";
         URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=e73560b8e6cc5f694d31429e878663a9");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()))) {
             String inputLine = null;

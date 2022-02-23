@@ -53,27 +53,29 @@ public class HTPPServer {
                         + "<h1 >Clima</h1>"
                         +" <label> Ciudad:    </label>"
                         +"<input type=\"text\" id = \"ingresado\">"
-                        +"<button"
+
+                        +"<script> "
+                        +" function clima(){\n" +
+                        "    fetch('http://localhost:4567/consulta?=london')\n" +
+                        "          .then(response => response.json())\n" +
+                        "          .then(json => console.log(json))\n" +
+                        "    }\n"
+
+
+                        +"</script>"
+                        +"<button type=\"button\" onclick = \"clima()\"> Clima! </button>"
                         + "</body>"
                         + "</html>";
             } else if (file.contains("/consulta?lugar=")) {
 
                 Clima clima = new Clima();
                 String resp = Clima.getClima(lista[1]);
+                System.out.println(resp);
 
                 outputLine = "HTTP/1.1 200 OK\r\n"
-                        + "Conten-Type: text/html\r\n"
+                        + "Conten-Type: application/json\r\n"
                         + "\r\n"
-                        + "<!DOCTYPE html>"
-                        + "<html>"
-                        + "<head>"
-                        + "<meta charset=\"UTF-8\">"
-                        + "<title>Consulta</title>\n"
-                        + "</head>"
-                        + "<body>"
-                        + resp
-                        + "</body>"
-                        + "</html>";
+                        + resp;
             }
             else {
 
