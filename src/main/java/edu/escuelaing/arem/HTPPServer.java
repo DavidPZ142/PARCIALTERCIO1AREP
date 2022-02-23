@@ -54,8 +54,9 @@ public class HTPPServer {
             out.close();
             in.close();
             clientSocket.close();
-            serverSocket.close();
         }
+            serverSocket.close();
+
     }
 
 
