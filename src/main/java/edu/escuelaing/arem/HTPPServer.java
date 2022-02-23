@@ -24,33 +24,65 @@ public class HTPPServer {
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String inputLine;
-
+            String outputLine;
+            boolean firstline = true;
+            String file = "";
             while ((inputLine = in.readLine()) != null) {
+                if (firstline) {
+                    file = inputLine.split(" ")[1];
+                    firstline = false;
+                }
                 System.out.println("Received: " + inputLine);
                 if (!in.ready()) {
                     break;
                 }
             }
+            if (file.contains("/clima")) {
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Conten-Type: text/html\r\n"
+                        + "\r\n"
+                        + "<!DOCTYPE html>"
+                        + "<html>"
+                        + "<head>"
+                        + "<meta charset=\"UTF-8\">"
+                        + "<title>Clima</title>\n"
+                        + "</head>"
+                        + "<body>"
+                        + "Clima"
+                        + "</body>"
+                        + "</html>";
+            } else if (file.contains("/consulta")) {
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Conten-Type: text/html\r\n"
+                        + "\r\n"
+                        + "<!DOCTYPE html>"
+                        + "<html>"
+                        + "<head>"
+                        + "<meta charset=\"UTF-8\">"
+                        + "<title>Consulta</title>\n"
+                        + "</head>"
+                        + "<body>"
+                        + "Clima"
+                        + "</body>"
+                        + "</html>";
+            }
+            else {
 
-
-            String outputLine;
-            outputLine = "HTTP/1.1 200 OK\r\n"
-                    + "Conten-Type: text/html\r\n"
-                    + "\r\n"
-                    + "<!DOCTYPE html>"
-                    + "<html>"
-                    + "<head>"
-                    + "<meta charset=\"UTF-8\">"
-                    + "<title>Title of the document</title>\n"
-                    + "</head>"
-                    + "<body>"
-                    + "My Web Site"
-                    + "</body>"
-                    + "</html>" ;
-
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Conten-Type: text/html\r\n"
+                        + "\r\n"
+                        + "<!DOCTYPE html>"
+                        + "<html>"
+                        + "<head>"
+                        + "<meta charset=\"UTF-8\">"
+                        + "<title>Title of the document</title>\n"
+                        + "</head>"
+                        + "<body>"
+                        + "My Web Site"
+                        + "</body>"
+                        + "</html>";
+            }
             out.println(outputLine);
-
-
             out.close();
             in.close();
             clientSocket.close();
