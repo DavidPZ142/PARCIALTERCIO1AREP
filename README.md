@@ -17,9 +17,9 @@ _Clima_ El boton funciona en consola pero la conexcion al api esta funcionado
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://parcialarepprimertercio.herokuapp.com/clima)
 
-_Consultar lugar_ Revisa el clima de bogota
+_Consultar lugar_ Revisa el clima de Amsterdam
 
-https://parcialarepprimertercio.herokuapp.com/consulta?lugar=bogota
+https://parcialarepprimertercio.herokuapp.com/consulta?lugar=amsterdam
 
 ## Construido con 🛠️
 
