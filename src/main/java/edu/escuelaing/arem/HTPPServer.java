@@ -58,7 +58,7 @@ public class HTPPServer {
                         +" function clima(){\n" +
                         "    fetch('https://parcialarepprimertercio.herokuapp.com/consulta?lugar=london')\n" +
                         "          .then(response => response.json())\n" +
-                        "          .then(json => console.log(json))\n" +
+                        "          .then(json => $('#resp').html(json.res))\n" +
                         "    }\n"
 
 
