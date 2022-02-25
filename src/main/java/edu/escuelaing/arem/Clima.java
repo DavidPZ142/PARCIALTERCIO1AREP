@@ -1,5 +1,7 @@
 package edu.escuelaing.arem;
 
+import com.google.gson.Gson;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +10,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Clima {
+    private static Gson gson;
 
+    public Clima(){
+        this.gson = new Gson();
+    }
 
     public static String getClima(String city) throws IOException {
         String res = "";
@@ -22,7 +28,7 @@ public class Clima {
         } catch (IOException x) {
             System.err.println(x);
         }
-        return res;
+        return gson.toJson(res);
     }
 
 }

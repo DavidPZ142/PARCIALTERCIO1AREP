@@ -56,7 +56,7 @@ public class HTPPServer {
 
                         +"<script> "
                         +" function clima(){\n" +
-                        "    fetch('http://localhost:4567/consulta?=london')\n" +
+                        "    fetch('https://parcialarepprimertercio.herokuapp.com/consulta?lugar=london')\n" +
                         "          .then(response => response.json())\n" +
                         "          .then(json => console.log(json))\n" +
                         "    }\n"
